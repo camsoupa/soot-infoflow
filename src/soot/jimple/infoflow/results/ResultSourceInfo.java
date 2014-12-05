@@ -51,6 +51,33 @@ public class ResultSourceInfo {
 	public List<Stmt> getPath() {
 		return this.path;
 	}
+	
+	public String printPath() {
+		StringBuilder sb = new StringBuilder();
+		int i;
+		
+		for(i = 0; i < path.size(); i++) {
+			sb.append(this.path.get(i).toString());
+			
+			try {
+				if(this.path.get(i).hasTag("LineNumberTag")) {
+					sb.append(" on line ");
+					sb.append(((LineNumberTag) this.path.get(i).getTag("LineNumberTag")).getLineNumber());
+					
+				}
+				else
+				{
+					sb.append(" on line - 1");
+				}
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			sb.append(",\n\t\t");
+		}
+		
+		return sb.toString();
+	}
 
     @Override
     public String toString(){
