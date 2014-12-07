@@ -78,6 +78,12 @@ public class ResultSourceInfo {
 		
 		return sb.toString();
 	}
+	
+	public int getSourceLineNumber() {
+		if (source.hasTag("LineNumberTag"))
+			return ((LineNumberTag) source.getTag("LineNumberTag")).getLineNumber();
+		else return -1;
+	}
 
     @Override
     public String toString(){

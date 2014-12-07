@@ -28,6 +28,13 @@ public class ResultSinkInfo {
 		return this.sink;
 	}
 	
+	public int getSinkLineNumber() {
+		if (sink != null && sink.hasTag("LineNumberTag"))
+			return ((LineNumberTag)sink.getTag("LineNumberTag")).getLineNumber();
+		else
+			return -1;
+	}
+	
 	@Override
 	public String toString() {
         StringBuilder sb = new StringBuilder(sink == null
